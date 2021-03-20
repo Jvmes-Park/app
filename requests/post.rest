@@ -1,6 +1,6 @@
-POST http://localhost:3000/todos
+POST http://localhost:3000/accounts
 Content-Type: application/json
 
 {
-    "description": "first post?"
+    "username": "James"
 }

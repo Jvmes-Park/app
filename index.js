@@ -65,6 +65,18 @@ app.delete('/todos/:id', async (req, res) => {
     }
 })
 
+app.post('/accounts', async (req, res) => {
+    try {
+        const { username } = req.body;
+        const newUser = await pool.query(
+            "INSERT INTO accounts (username) VALUES ($1) RETURNING *", [username]
+        );
+        res.json(newUser.rows[0]);
+    } catch (err) {
+        console.error(err.message)
+    }
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 })
